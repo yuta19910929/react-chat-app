@@ -5,13 +5,14 @@ import { auth, db } from '../firebase.js';
 
 const Chat = () => {
 
+  //firebaseからデータを取得
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     db.collection("messages")
-    .orderBy("createdAt")
-    .limit(50)
-    .onSnapshot((snapshot) => {
-      setMessages(snapshot.docs.map((doc) => doc.data()));
+      .orderBy("createdAt")
+      .limit(50)
+      .onSnapshot((snapshot) => {
+        setMessages(snapshot.docs.map((doc) => doc.data()));
     });
   }, []);
 
@@ -23,11 +24,15 @@ const Chat = () => {
         <SignOut />
       </header>
       <div className="msgs">
-        {messages.map(({id, text, photoURL, uid}) =>(
-          <div key={id} className={`msg ${uid == auth.currentUser.uid ? "send" : "received"}`}>
-            <img src={photoURL} alt=""/ >
-            <p>{text}</p>
+        {messages.map(({id, text, photoURL, uid}) => (
+          <div className={`${uid === auth.currentUser.uid ? "taR" : "taL"}`}>
+            <div
+              key={id}
+              className={`msg ${uid === auth.currentUser.uid ? "send" : "received"}`}>
+                <img src={photoURL} alt="acountPhoto" />
+                <p>{text}</p>
           </div>
+        </div>
         ))}
       </div>
       <SendMessage />
