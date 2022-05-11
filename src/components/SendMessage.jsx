@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { db, auth } from '../firebase.js';
 import firebase from 'firebase/compat/app';
 import { Input} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { scrollToBottom } from '../helper.js';
 
 const SendMessage = () => {
   const [message, setMessage] = useState("");
 
+  //firebaseへデータを送信
   const sendMessage = (e) =>{
     e.preventDefault();
     const { uid, photoURL } = auth.currentUser;
@@ -19,7 +21,9 @@ const SendMessage = () => {
     });
 
     setMessage("");
+    scrollToBottom();
   }
+
   return (
     <div>
       <form onSubmit={sendMessage}>
@@ -36,7 +40,8 @@ const SendMessage = () => {
             type="text"
             onChange={(e) => setMessage(e.target.value)}
             value={message} />
-          <SendIcon />
+          <SendIcon
+            onClick={sendMessage} />
         </div>
       </form>
     </div>
