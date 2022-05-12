@@ -8,6 +8,10 @@
   justify-content: flex-start;
 }
 
+.mb30{
+  margin-bottom: 30px;
+}
+
 body {
   background-color: #f0e68c;
   margin: 0;

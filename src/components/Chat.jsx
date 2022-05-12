@@ -20,7 +20,7 @@ const Chat = () => {
     <div>
       <header>
         <h1>Lime</h1>
-        <h2>{auth.currentUser.displayName}でログイン</h2>
+        <h2>{auth.currentUser.displayName}でログイン中</h2>
         <SignOut />
       </header>
       <div className="msgs">
