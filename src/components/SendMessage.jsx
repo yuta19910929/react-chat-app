@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { db, auth } from '../firebase.js';
 import firebase from 'firebase/compat/app';
-import { Input} from '@mui/material';
+import { Input } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { scrollToBottom } from '../helper.js';
 
