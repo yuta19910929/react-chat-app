@@ -24,7 +24,8 @@ const AlertBox = () => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            管理者へお問い合わせください。
+            許可された方のみログインできます。<br />
+            管理者へお問合せください。
           </DialogContentText>
         </DialogContent>
         <DialogActions>
