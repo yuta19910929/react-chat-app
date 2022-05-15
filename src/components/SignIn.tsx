@@ -1,21 +1,18 @@
-import { useState, useEffect, useContext } from 'react';
-import { AdminFlagContext } from "./providers/AdminFlagProvider";
-import { Input, TextField, Button } from '@mui/material';
+import { useState } from 'react';
+import { Input, Button } from '@mui/material';
 import firebase from 'firebase/compat/app';
 import { auth } from '../firebase.js';
-import AlertBox from './AlertBox';
 
-const SignIn: React.VFC = () => {
-  const [password, setPassword] = useState();
-  const { modal, setModal } = useContext(AdminFlagContext);
+const SignIn: React.FC = () => {
+  const [ password, setPassword ] = useState<string>();
+  const [ modal, setModal ] = useState<boolean>(false);
 
   const signInWithGoogle = () => {
     if(process.env.REACT_APP_CHAT_PASS === password){
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider);
     }else {
-      setModal((prev) => !prev);
-      console.log(modal);
+      setModal(!modal);
     }
   }
 
@@ -28,7 +25,7 @@ const SignIn: React.VFC = () => {
           id="password"
           placeholder="パスワードを入力"
           type={'password'}
-          onChange={(e) => setPassword(e.target.value)} />
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
       </div>
       <Button
         variant="contained"
@@ -36,7 +33,8 @@ const SignIn: React.VFC = () => {
       >
         グーグルでログイン
       </Button>
-      {modal && <AlertBox />}
+      {modal && <div className="mt50"><p>テスト環境のため、パスワードの入力が必要です。<br />
+      管理者へお問合せください</p></div>}
     </div>
   );
 }

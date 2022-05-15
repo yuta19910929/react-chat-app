@@ -3,7 +3,7 @@ import SignOut from './SignOut';
 import SendMessage from './SendMessage';
 import { auth, db } from '../firebase.js';
 
-const Chat: React.VFC = (messageData) => {
+const Chat: React.FC = () => {
 
   //firebaseからデータを取得
   const [messages, setMessages] = useState<any[]>([]);
