@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Input, Button } from '@mui/material';
 import firebase from 'firebase/compat/app';
 import { auth } from '../firebase.js';
+import { IconContext } from 'react-icons'
+import { GiCutLemon } from 'react-icons/gi';
 
 const SignIn: React.FC = () => {
   const [ password, setPassword ] = useState<string>();
@@ -12,13 +14,16 @@ const SignIn: React.FC = () => {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider);
     }else {
-      setModal(!modal);
+      setModal(true);
     }
   }
 
   return (
     <div className="topMsg">
-      <p>新しいチャットアプリ！<br />
+      <IconContext.Provider value={{ color: '#32cd32', size: '100px' }}>
+        <GiCutLemon />
+      </IconContext.Provider>
+      <p>チャットアプリ<br />
       LIMEで会話しよう！</p>
       <div className="mb30">
         <Input

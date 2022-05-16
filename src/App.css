@@ -25,11 +25,11 @@ body {
 header {
   background-color: #000080;
   color: white;
-  height: 75px;
+  height: 70px;
   width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
+  
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -38,6 +38,14 @@ header {
 header h1,h2 {
   color: white;
   font-family: sans-serif;
+}
+
+.limeIcon{
+  color: #32cd32;
+  size: 30px;
+  margin-right: 12px;
+  position: relative;
+  top: 3px;
 }
 
 img {
@@ -60,7 +68,7 @@ p {
 body .topMsg{
   display: block;
   width: 50%;
-  margin: 20% auto;
+  margin: 15% auto;
   text-align: center;
 }
 
@@ -124,7 +132,21 @@ body .topMsg{
   }
 }
 
+@media (max-width: 600px) {
+  header h1,h2 {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 500px) {
+  header h1,h2 {
+    font-size: 15px;
+  }
+  .limeIcon{
+    margin-right: 5px;
+    position: relative;
+    top: 3px;
+  }
   p {
     font-size: 15px;
   }

@@ -15,22 +15,26 @@ const SendMessage: React.FC = () => {
   const user = auth.currentUser;
 
   const sendMessage = (e: any) =>{
-    e.preventDefault();
-    //サインインしている状態であればデータを送信
-    if (user) {
-      //firebaseへデータを送信
-      const { uid, photoURL } = auth.currentUser;
-      db.collection("messages").add({
-        text: message,
-        photoURL,
-        uid,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-    } else {
-      //サインアウト状態
+    if(message === ""){
+      //メッセージ欄になにもない場合
+    } else{
+      e.preventDefault();
+      //サインインしている状態であればデータを送信
+      if (user) {
+        //firebaseへデータを送信
+        const { uid, photoURL } = auth.currentUser;
+        db.collection("messages").add({
+          text: message,
+          photoURL,
+          uid,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+      } else {
+        //サインアウト状態
+      }
+      setMessage("");
+      scrollToBottom();
     }
-    setMessage("");
-    scrollToBottom();
   }
 
   return (
