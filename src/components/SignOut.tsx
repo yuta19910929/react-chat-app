@@ -6,7 +6,10 @@ const SignOut: React.FC = () => {
 
   return (
     <div>
-      <Button variant="contained" onClick={() => auth.signOut()}>
+      <Button 
+        variant="contained" 
+        onClick={() => auth.signOut()}
+        size="small" >
         サインアウト
       </Button>
     </div>
